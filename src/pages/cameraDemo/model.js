@@ -1,7 +1,6 @@
 import reducers from '@/app/reducers';
 import {context, IO} from '@/app/io';
 
-
 //封装页面reducer、action
 let demoModel = {
   reducer: (defaultState = {
