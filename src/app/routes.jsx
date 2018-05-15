@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import reducers from './reducers.js';
 
-const todos = combineReducers(reducers.getReducers());
+const todos = combineReducers(reducers.assemble);
 let store = createStore(todos, applyMiddleware(thunk));
 
 class App extends Component {

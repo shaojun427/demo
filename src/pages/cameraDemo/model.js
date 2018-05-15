@@ -28,7 +28,7 @@ let demoModel = {
     }
   }
 }
-reducers.setReducers({demoReducer: demoModel.reducer});
+reducers.assemble = {demoReducer: demoModel.reducer};
 
 const action = demoModel.action;
 

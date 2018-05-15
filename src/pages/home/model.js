@@ -61,7 +61,7 @@ let homeModel = {
   }
 };
 
-reducers.setReducers({homeReducer: homeModel.reducer});
+reducers.assemble = {homeReducer: homeModel.reducer};
 
 const action = homeModel.action;
 
