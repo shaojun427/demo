@@ -7,7 +7,7 @@
     "daily": "npm run clear && cross-env NODE_ENV=daily webpack -p --progress",
     "prepub": "npm run clear && cross-env NODE_ENV=prepub webpack -p --progress",
     "publish": "npm run clear && cross-env NODE_ENV=publish webpack -p --progress",
-    "watch": "webpack-dev-server --content-base --inline --hot --host 0.0.0.0 --port 3033"
+    "watch": "webpack-dev-server --content-base --inline --hot --host 0.0.0.0 --port 8099"
   },
   "keywords": [],
   "author": "zhoushaojun",
@@ -20,9 +20,12 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
+    "blueimp-file-upload": "^9.21.0",
     "cross-env": "^5.1.1",
     "css-loader": "^0.28.7",
     "extract-text-webpack-plugin": "^3.0.1",
+    "imports-loader": "^0.8.0",
+    "jquery": "^3.3.1",
     "less": "^3.0.0-alpha.3",
     "less-loader": "^4.0.5",
     "react-intl": "^2.4.0",
@@ -37,13 +40,13 @@
     "lodash": "^4.17.4",
     "natty-fetch": "^2.5.3",
     "nprogress": "^0.2.0",
-    "react": "^15.6.2",
-    "react-dom": "^15.6.2",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "react-redux": "^5.0.7",
-    "redux-thunk": "^2.2.0",
     "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
     "transform-runtime": "0.0.0"
   }
 }

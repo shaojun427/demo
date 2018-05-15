@@ -8,10 +8,12 @@ let entry = {
   index: './src/app/app.js',
   'en-us': './src/i18ncss/en-us.less'
 };
+const host = env ? "" : "";
 let plugins = [
   EXCSS,
   new webpack.DefinePlugin({
-    "__ENV__": JSON.stringify(env)
+    "__ENV__": JSON.stringify(env),
+    "host": JSON.stringify(host)
   }),
   new webpack.optimize.CommonsChunkPlugin({
     names: ["uxcoreChild", "vendor"]
@@ -38,9 +40,14 @@ module.exports = {
   },
   devServer: {
     disableHostCheck: true,
-    historyApiFallback: false
+    historyApiFallback: true
   },
   devtool,
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src')
+    }
+  },
   module:{
     rules: [{
       test: /\.(js|jsx)$/,
@@ -58,23 +65,32 @@ module.exports = {
         }
       ]
     },
-      {
-        test: /\.(png|jpg|gif)$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 8192
-            }
+    {
+      test: /blueimp-file-upload/,
+      use: "imports-loader?define=>false"
+    },
+    {
+      test: /medium-editor-insert-plugin/,
+      use: "imports-loader?define=>false"
+    },
+    {
+      test: /\.(png|jpg|gif)$/,
+      use: [
+        {
+          loader: 'url-loader',
+          options: {
+            limit: 8192
           }
-        ]
-      }, {
-        test: /\.(less|css)$/,
-        use: EXCSS.extract({
-          fallback: "style-loader",
-          use: ['css-loader', 'less-loader']
-        })
-      }]
+        }
+      ]
+    },
+    {
+      test: /\.(less|css)$/,
+      use: EXCSS.extract({
+        fallback: "style-loader",
+        use: ['css-loader', 'less-loader']
+      })
+    }]
   },
   plugins: plugins
 };
