@@ -10,11 +10,12 @@ let entry = {
 };
 let plugins = [
   EXCSS,
+  new webpack.HotModuleReplacementPlugin(),
   new webpack.DefinePlugin({
     "__ENV__": JSON.stringify(env)
   }),
   new webpack.optimize.CommonsChunkPlugin({
-    names: ["uxcoreChild", "vendor"]
+    names: ["vendor"]
   })
 ];
 let devtool = "cheap-module-eval-source-map";
@@ -38,7 +39,20 @@ module.exports = {
   },
   devServer: {
     disableHostCheck: true,
-    historyApiFallback: true
+    historyApiFallback: true,
+    hot: true,
+    inline: true,
+    host: '0.0.0.0',
+    port: 8099,
+    //devServer跨域代理配置
+    proxy: {
+      '/proxy': {
+        target: 'https://shaojun427.github.io/',
+        pathRewrite: {'^/proxy' : ''},
+        changeOrigin: true,
+        secure: false
+      }
+    }
   },
   devtool,
   resolve: {

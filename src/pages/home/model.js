@@ -1,11 +1,14 @@
 import reducers from '@/app/reducers';
 import {context, IO} from '@/app/io';
-
 //配置接口参数
 context.create('Home', {
   test: {
     mockUrl: 'home/test.json',
     url: 'mock/home/test.json'
+  },
+  crossOrigin: {
+    mockUrl: '/proxy/expressDemo/crossOrigin.json',
+    url: '/expressDemo/crossOrigin.json'
   }
 });
 
@@ -31,6 +34,11 @@ let homeModel = {
         return Object.assign({}, defaultState, {
           data
         });
+      case 'GET_CROSS_DATA':
+        let crossData = JSON.stringify(action.crossData);
+        return Object.assign({}, defaultState, {
+          crossData
+        });
     }
     return defaultState;
   },
@@ -54,6 +62,15 @@ let homeModel = {
           dispatch({
             type: "GET_DATA",
             data
+          })
+        }).catch()
+      },
+      getCrossDataHandle: () => {
+        IO.Home.crossOrigin().then((res) => {
+          const crossData = res.data;
+          dispatch({
+            type: "GET_CROSS_DATA",
+            crossData
           })
         }).catch()
       }

@@ -24,9 +24,12 @@ class Home extends Component {
   getDataHandle() {
     this.props.getDataHandle()
   }
+  getCrossDataHandle() {
+    this.props.getCrossDataHandle()
+  }
   render() {
     const me = this;
-    const {test, final, data} = me.props;
+    const {test, final, data, crossData} = me.props;
     return (<div>
       <input type="text" value={test} onChange={me.changeHandle.bind(me)}/>
       <button onClick={me.clickHandle.bind(me)}>平方计算</button>
@@ -34,15 +37,19 @@ class Home extends Component {
       <br />
       <button onClick={me.getDataHandle.bind(me)}>获取接口数据</button>
       <span>{data}</span>
+      <br />
+      <button onClick={me.getCrossDataHandle.bind(me)}>本地开发获取跨域接口数据</button>
+      <span>{crossData}</span>
     </div>)
   }
 }
 const mapStateToProps = (state) => {
-  const {value, final, data} = state.homeReducer;
+  const {value, final, data, crossData} = state.homeReducer;
   return {
     value,
     final,
-    data
+    data,
+    crossData
   }
 };
 export default connect(mapStateToProps, action)(Home);
