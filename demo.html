@@ -15,7 +15,7 @@
     text-align: center;
     height: 100%;
   }
-  .btn {
+  .btn,.btn2 {
     padding: 2px 15px;
     cursor: pointer;
     border: 1px solid #2299dd;
@@ -24,10 +24,15 @@
 </style>
 <body>
 <input type="file" id="camera" accept="image/*" capture="camera" style="display: none" />
+<input type="file" id="file" multiple accept="image/*" style="display: none" />
 <a class="btn">立即拍照</a>
+<a class="btn2">从相册选择</a>
 <script>
   $('.btn')[0].addEventListener('touchend', function() {
     $('#camera').click();
+  })
+  $('.btn2')[0].addEventListener('touchend', function() {
+    $('#file').click();
   })
 </script>
 </body>
