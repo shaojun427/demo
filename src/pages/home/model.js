@@ -15,7 +15,7 @@ context.create('Home', {
 //封装页面reducer、action
 let homeModel = {
   reducer: (defaultState = {
-    test: ''
+    value: ''
   }, action) => {
     switch (action.type) {
       case 'CHANGE_VALUE':

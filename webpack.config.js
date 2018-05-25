@@ -42,8 +42,8 @@ module.exports = {
     historyApiFallback: true,
     hot: true,
     inline: true,
-    host: '0.0.0.0',
     port: 8099,
+    open: true,
     //devServer跨域代理配置
     proxy: {
       '/proxy': {
@@ -76,14 +76,6 @@ module.exports = {
           }
         }
       ]
-    },
-    {
-      test: /blueimp-file-upload/,
-      use: "imports-loader?define=>false"
-    },
-    {
-      test: /medium-editor-insert-plugin/,
-      use: "imports-loader?define=>false"
     },
     {
       test: /\.(png|jpg|gif)$/,

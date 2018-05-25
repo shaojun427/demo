@@ -29,9 +29,9 @@ class Home extends Component {
   }
   render() {
     const me = this;
-    const {test, final, data, crossData} = me.props;
+    const {value, final, data, crossData} = me.props;
     return (<div>
-      <input type="text" value={test} onChange={me.changeHandle.bind(me)}/>
+      <input type="text" value={value} onChange={me.changeHandle.bind(me)}/>
       <button onClick={me.clickHandle.bind(me)}>平方计算</button>
       <span>{final}</span>
       <br />
